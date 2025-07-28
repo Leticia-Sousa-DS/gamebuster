@@ -22,29 +22,18 @@ fun main() {
         .send(request, HttpResponse.BodyHandlers.ofString())
 
     val json = response.body()
-    println(json)
+    //println(json)
 
     val gson = Gson()
     val myGameInfo = gson.fromJson(json, InfoGame::class.java)
 
-//    try {
-//        val myGame = Game(
-//            myGameInfo.info.title,
-//            myGameInfo.info.thumb
-//        )
-//
-//        println(myGame)
-//    } catch (e: NullPointerException) {
-//        println("Jogo inexistente! Tente novamente com outro Id!")
-//    }
+    var myGame: Game? = null
 
     val result = runCatching {
-        val myGame = Game(
+        myGame = Game(
             myGameInfo.info.title,
             myGameInfo.info.thumb
         )
-
-        println(myGame)
     }
     result.onFailure {
         println("Jogo inexistente! Tente novamente com outro Id!")
@@ -55,11 +44,17 @@ fun main() {
         val option = scanner.nextLine()
         if(option.equals("s", true)){
             println("Digite a descrição para o jogo: ")
-            val description =  scanner.nextLine()
-            myGame.description
+            val customDescription =  scanner.nextLine()
+            myGame?.description = customDescription
         } else {
-
+            myGame?.description = myGame.title
         }
+
+        println(myGame)
+    }
+
+    result.onSuccess {
+        println("Busca finalizada com sucesso!")
     }
 
 
