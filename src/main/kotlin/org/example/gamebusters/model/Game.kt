@@ -1,4 +1,4 @@
-package org.example
+package org.example.gamebusters.model
 
 data class Game(val title:String, val cover:String) {
     var description:String? = null

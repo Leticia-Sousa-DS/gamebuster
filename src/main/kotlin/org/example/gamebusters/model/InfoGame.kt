@@ -1,4 +1,4 @@
-package org.example
+package org.example.gamebusters.model
 
 class InfoGame(val info: InfoSharkApi) {
 

@@ -1,6 +1,9 @@
-package org.example
+package org.example.gamebusters.main
 
 import com.google.gson.Gson
+import org.example.gamebusters.model.Game
+import org.example.gamebusters.model.InfoGame
+import org.example.gamebusters.service.ConsumeApi
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -12,27 +15,15 @@ fun main() {
     println("Digite o id do jogo:")
     val searchId = scanner.nextLine()
 
-    val address = "https://www.cheapshark.com/api/1.0/games?id=$searchId"
-
-    val client: HttpClient = HttpClient.newHttpClient()
-    val request = HttpRequest.newBuilder()
-        .uri(URI.create(address))
-        .build()
-    val response = client
-        .send(request, HttpResponse.BodyHandlers.ofString())
-
-    val json = response.body()
-    //println(json)
-
-    val gson = Gson()
-    val myGameInfo = gson.fromJson(json, InfoGame::class.java)
+    val searchApi = ConsumeApi()
+    val GameInfo = searchApi.findGame(searchId)
 
     var myGame: Game? = null
 
     val result = runCatching {
         myGame = Game(
-            myGameInfo.info.title,
-            myGameInfo.info.thumb
+            GameInfo.info.title,
+            GameInfo.info.thumb
         )
     }
     result.onFailure {
