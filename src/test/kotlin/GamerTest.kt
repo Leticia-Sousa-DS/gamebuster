@@ -12,4 +12,12 @@ fun main() {
         "19/10/1990",
         "thezz")
     println(gamer2)
+
+    gamer1.let {
+        it.dateOfBirth = "30/12/2000"
+        it.user = "jaqwar"
+        it.internalId = "jaqwar123"
+    }
+
+    println(gamer1)
 }
