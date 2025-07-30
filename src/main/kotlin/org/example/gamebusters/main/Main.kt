@@ -1,14 +1,8 @@
 package org.example.gamebusters.main
 
-import com.google.gson.Gson
 import org.example.gamebusters.model.Game
-import org.example.gamebusters.model.InfoGame
 import org.example.gamebusters.service.ConsumeApi
-import java.net.URI
-import java.net.http.HttpClient
-import java.net.http.HttpRequest
-import java.net.http.HttpResponse
-import java.util.Scanner
+import java.util.*
 
 fun main() {
     val scanner = Scanner(System.`in`)
