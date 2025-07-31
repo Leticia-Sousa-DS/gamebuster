@@ -16,7 +16,8 @@ fun main() {
     gamer1.let {
         it.dateOfBirth = "30/12/2000"
         it.user = "jaqwar"
-        it.internalId = "jaqwar123"
+    }.also {
+        println(gamer1.internalId)
     }
 
     println(gamer1)
