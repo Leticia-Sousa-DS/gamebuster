@@ -13,6 +13,7 @@ data class Gamer(var name:String, var email:String){
         }
     var internalId:String? = null
         private set
+    val searchedGames = mutableListOf<Game>()
 
     constructor(name: String, email: String, dateOfBirth: String, user: String):
             this(name, email) {
