@@ -9,11 +9,11 @@ import java.net.http.HttpResponse
 
 class ConsumeApi {
     fun findGame(id: String): InfoGame {
-        val address = "https://www.cheapshark.com/api/1.0/games?id=$id"
+        val gameApi = "https://www.cheapshark.com/api/1.0/games?id=$id"
 
         val client: HttpClient = HttpClient.newHttpClient()
         val request = HttpRequest.newBuilder()
-            .uri(URI.create(address))
+            .uri(URI.create(gameApi))
             .build()
         val response = client
             .send(request, HttpResponse.BodyHandlers.ofString())
