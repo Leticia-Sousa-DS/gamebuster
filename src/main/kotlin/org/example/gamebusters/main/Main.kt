@@ -3,6 +3,7 @@ package org.example.gamebusters.main
 import org.example.gamebusters.model.Game
 import org.example.gamebusters.model.Gamer
 import org.example.gamebusters.service.ConsumeApi
+import transformToAge
 import java.util.*
 
 fun main() {
@@ -10,6 +11,7 @@ fun main() {
     val gamer = Gamer.createGamer(scanner)
     println("Cadastro feito com sucesso!\n Dados do gamer: ")
     println(gamer)
+    println("Idade do gamer: " + gamer.dateOfBirth?.transformToAge())
 
     do {
         println("Digite o id do jogo:")
