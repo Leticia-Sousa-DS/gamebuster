@@ -1,5 +1,6 @@
 package org.example.gamebusters.model
 
+import java.util.Scanner
 import kotlin.random.Random
 
 data class Gamer(var name:String, var email:String){
@@ -13,7 +14,7 @@ data class Gamer(var name:String, var email:String){
         }
     var internalId:String? = null
         private set
-    val searchedGames = mutableListOf<Game>()
+    val searchedGames = mutableListOf<Game?>()
 
     constructor(name: String, email: String, dateOfBirth: String, user: String):
             this(name, email) {
@@ -46,6 +47,28 @@ data class Gamer(var name:String, var email:String){
             return email
         } else {
             throw IllegalArgumentException("Email inválido")
+        }
+    }
+
+    companion object {
+        fun createGamer(scanner: Scanner): Gamer {
+            println("Boas vindas ao GameBusters!\n Vamos fazer seu cadastro?\n Digite seu nome: ")
+            val name = scanner.nextLine()
+            println("Digite seu e-mail:")
+            val email = scanner.nextLine()
+            println("Deseja completar seu cadastro com usuário e data de nascimento? (S/N)")
+            val option = scanner.nextLine()
+
+            if (option.equals("s", true)){
+                println("Digite sua data de nascimento(DD/MM/AAAA):")
+                val birthdate = scanner.nextLine()
+                println("Digite seu nome de usuário:")
+                val username = scanner.nextLine()
+
+                return Gamer(name, email, birthdate, username)
+            } else {
+               return  Gamer(name, email)
+            }
         }
     }
 
