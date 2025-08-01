@@ -12,18 +12,20 @@ import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 
 class ConsumeApi {
-    fun findGame(id: String): InfoGame {
-        val gameApi = "https://www.cheapshark.com/api/1.0/games?id=$id"
-
+    private fun consumeData(url: String): String {
         val client: HttpClient = HttpClient.newHttpClient()
         val request = HttpRequest.newBuilder()
-            .uri(URI.create(gameApi))
+            .uri(URI.create(url))
             .build()
         val response = client
             .send(request, HttpResponse.BodyHandlers.ofString())
 
-        val json = response.body()
-        //println(json)
+        return response.body()
+    }
+
+    fun findGame(id: String): InfoGame {
+        val url = "https://www.cheapshark.com/api/1.0/games?id=$id"
+        val json = consumeData(url)
 
         val gson = Gson()
         val myGameInfo = gson.fromJson(json, InfoGame::class.java)
@@ -32,17 +34,8 @@ class ConsumeApi {
     }
 
     fun findGamers(): List<Gamer> {
-        val jsonAddress = "https://raw.githubusercontent.com/jeniblodev/arquivosJson/main/gamers.json"
-
-        val client: HttpClient = HttpClient.newHttpClient()
-        val request = HttpRequest.newBuilder()
-            .uri(URI.create(jsonAddress))
-            .build()
-        val response = client
-            .send(request, HttpResponse.BodyHandlers.ofString())
-
-        val json = response.body()
-        //println(json)
+        val url = "https://raw.githubusercontent.com/jeniblodev/arquivosJson/main/gamers.json"
+        val json = consumeData(url)
 
         val gson = Gson()
         val gamerType = object : TypeToken<List<InfoGamerJson>>() {}.type
