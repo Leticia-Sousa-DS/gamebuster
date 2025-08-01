@@ -1,90 +1,49 @@
 <h1 align="center" style="font-weight: bold;">GAMEBUSTERS 💻</h1>
 
-
 ![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)
 
-
 <p align="center">
- <a href="#started">Getting Started</a> • 
-  <a href="#routes">API Endpoints</a> •
+  <b>Sistema para gestão de aluguel de jogos digitais, desenvolvido em Kotlin.</b>
 </p>
 
-<p align="center">
-  <b>Aplicação de aluguel de jogos</b>
-</p>
+---
 
-<h2 id="started">🚀 Getting started</h2>
+## ⚙️ Pré-requisitos
+- Java 17 ou superior
+- Maven 3.8+
+- Dependências principais:
+  - Kotlin 2.1.20
+  - Gson 2.10.1
+  - JUnit Jupiter 5.10.0 (testes)
 
-Here you describe how to run your project locally
+## 🚀 Sobre o Projeto
+GameBusters é uma aplicação focada na gestão de aluguel de jogos digitais. Os títulos são obtidos diretamente da API CheapShark, permitindo consulta eficiente do catálogo. O sistema oferece cadastro e gerenciamento de usuários (gamers). 
 
-<h3>Prerequisites</h3>
+## ⚡ Como Executar
 
-Here you list all prerequisites necessary for running your project. For example:
-
-- [NodeJS](https://github.com/)
-- [Git 2](https://github.com)
-
-<h3>Cloning</h3>
-
-How to clone your project
-
+### Clonando o repositório
 ```bash
-git clone your-project-url-in-github
+git clone https://github.com/seu-usuario/GameBusters.git
+cd GameBusters
 ```
 
-<h3> Environment Variables</h2>
-
-Use the `application.properties.example` as reference to create your configuration file `application.properties` with your AWS Credentials
-
-```yaml
-aws.region=us-east-1
-aws.accessKeyId={YOUR_AWS_KEY_ID}
-aws.secretKey={YOUR_AWS_SECRET}
-```
-
-<h3>Starting</h3>
-
-How to start your project
-
+### Build & Run
 ```bash
-cd project-name
-npm some-command-to-run
-``````
-
-
-<h2 id="routes">📍 API Endpoints</h2>
-
-Here you can list the main routes of your API, and what are their expected request bodies.
-​
-| route               | description                                          
-|----------------------|-----------------------------------------------------
-| <kbd>GET /authenticate</kbd>     | retrieves user info see [response details](#get-auth-detail)
-| <kbd>POST /authenticate</kbd>     | authenticate user into the api see [request details](#post-auth-detail)
-
-<h3 id="get-auth-detail">GET /authenticate</h3>
-
-**RESPONSE**
-```json
-{
-  "name": "something",
-  "age": 20,
-  "email": "email@gmail.com"
-}
+mvn clean install
+mvn exec:java -Dexec.mainClass="org.example.gamebusters.main.Main"
 ```
 
-<h3 id="post-auth-detail">POST /authenticate</h3>
+## 📍 Funcionalidades
+- Consulta de jogos via API CheapShark
+- Cadastro e gerenciamento de gamers
+- (Em desenvolvimento) Locação de jogos
 
-**REQUEST**
-```json
-{
-  "username": "",
-  "password": ""
-}
-```
+## 📄 Estrutura do Projeto
+- `model/` - Modelos de domínio
+- `service/` - Serviços e integrações
+- `utils/` - Utilitários
+- `main/` - Ponto de entrada
 
-**RESPONSE**
-```json
-{
-  "token": "OwoMRHsaQwyAgVoc3OXmL1JhMVUYXGGBbCTK0GBgiYitwQwjf0gVoBmkbuyy0pSi"
-}
-```
+---
+
+> Projeto em desenvolvimento para fins acadêmicos e demonstração.
