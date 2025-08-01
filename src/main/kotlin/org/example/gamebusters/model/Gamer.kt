@@ -1,5 +1,6 @@
 package org.example.gamebusters.model
 
+import java.time.LocalDate
 import java.util.Scanner
 import kotlin.random.Random
 
@@ -48,6 +49,10 @@ data class Gamer(var name:String, var email:String){
         } else {
             throw IllegalArgumentException("Email inválido")
         }
+    }
+
+    fun rentAGame(game: Game, rentalPeriod: RentalPeriod): Rent{
+        return Rent(this, game, rentalPeriod)
     }
 
     companion object {

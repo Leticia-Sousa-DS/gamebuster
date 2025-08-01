@@ -12,9 +12,10 @@ data class Game(val title:String, val cover:String) {
 
     override fun toString(): String {
         return "My Game: \n" +
-                "Title='$title' \n" +
-                "Cover='$cover' \n" +
-                "Description='$description'"
+                "Title= $title \n" +
+                "Cover= '$cover' \n" +
+                "Price= $price \n" +
+                "Description= $description"
     }
 
 
