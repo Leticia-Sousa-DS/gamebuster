@@ -2,8 +2,10 @@ package org.example.gamebusters.service
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import org.example.gamebusters.model.Gamer
 import org.example.gamebusters.model.InfoGame
 import org.example.gamebusters.model.InfoGamerJson
+import org.example.gamebusters.utils.createGamer
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -29,7 +31,7 @@ class ConsumeApi {
         return myGameInfo
     }
 
-    fun findGamers(): List<InfoGamerJson> {
+    fun findGamers(): List<Gamer> {
         val jsonAddress = "https://raw.githubusercontent.com/jeniblodev/arquivosJson/main/gamers.json"
 
         val client: HttpClient = HttpClient.newHttpClient()
@@ -46,6 +48,8 @@ class ConsumeApi {
         val gamerType = object : TypeToken<List<InfoGamerJson>>() {}.type
         val gamerList: List<InfoGamerJson> = gson.fromJson(json, gamerType)
 
-        return gamerList
+        val convertedGamerList = gamerList.map { infoGamerJson -> infoGamerJson.createGamer() }
+
+        return convertedGamerList
     }
 }
