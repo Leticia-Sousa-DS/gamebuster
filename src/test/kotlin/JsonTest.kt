@@ -14,15 +14,25 @@ fun main(){
 
     val gamerAna = gamerList.get(1)
     val gameTLOU = gameList.get(2)
+    val gameSpiderman = gameList.get(13)
 
-    println(gamerAna)
-    println(gameTLOU)
+//    println(gamerAna)
+//    println(gameTLOU)
 
     val  period = RentalPeriod(LocalDate.now(), LocalDate.now().plusDays(7))
+    val period2 = RentalPeriod(LocalDate.now(), LocalDate.now().plusDays(8))
 
-    val rent = gamerAna.rentAGame(
+   gamerAna.rentAGame(
         gameTLOU,
         period
     )
-    println(rent)
+
+    gamerAna.rentAGame(
+        gameSpiderman,
+        period2
+    )
+
+
+
+    println(gamerAna.rentedGames)
 }

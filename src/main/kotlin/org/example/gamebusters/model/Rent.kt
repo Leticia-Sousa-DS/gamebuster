@@ -11,7 +11,7 @@ data class Rent(
     val rentValue = game.price * rentalPeriod.inDays
 
     override fun toString(): String {
-       return "${gamer.name} alugou '${game.title}' pela bagatela de R$ $rentValue."
+       return "${gamer.name} alugou '${game.title}' por R$ $rentValue."
 //                "Aluguel do game ${game.title} por ${gamer.name}"
     }
 }
