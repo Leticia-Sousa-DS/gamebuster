@@ -1,10 +1,9 @@
 package org.example.gamebusters.model
 
-import java.time.LocalDate
 import java.util.Scanner
 import kotlin.random.Random
 
-data class Gamer(var name:String, var email:String){
+data class Gamer(var name:String, var email:String): Recommended{
     var dateOfBirth:String? = null
     var user:String? = null
         set(value){
@@ -15,7 +14,28 @@ data class Gamer(var name:String, var email:String){
         }
     var internalId:String? = null
         private set
+    var plan: Plan = StandalonePlan("BRONZE")
+
     val searchedGames = mutableListOf<Game?>()
+    val rentedGames = mutableListOf<Rent?>()
+    val recommendedGames = mutableListOf<Game>()
+    private val ratingsList = mutableListOf<Int>()
+
+    fun recommendAGame(game: Game, rating: Int) {
+        game.recommend(rating)
+        recommendedGames.add(game)
+    }
+
+    override val avgRating: Double
+        get() = ratingsList.average()
+
+    override fun recommend(rating: Int) {
+        if (rating < 1 || rating > 10){
+            println("Inválido! Por favor, insira uma nota entre 1 e 10")
+        } else {
+            ratingsList.add(rating)
+        }
+    }
 
     constructor(name: String, email: String, dateOfBirth: String, user: String):
             this(name, email) {
@@ -32,7 +52,13 @@ data class Gamer(var name:String, var email:String){
     }
 
     override fun toString(): String {
-        return "Gamer(name='$name', email='$email', dateOfBirth=$dateOfBirth, user=$user, internalId=$internalId)"
+        return "Gamer \n" +
+                "(name='$name', \n" +
+                " email='$email',\n" +
+                " dateOfBirth=$dateOfBirth, \n" +
+                "user=$user, \n" +
+                "internalId=$internalId\n" +
+                "reputation = $avgRating )"
     }
 
     fun createInternalId() {
@@ -52,7 +78,16 @@ data class Gamer(var name:String, var email:String){
     }
 
     fun rentAGame(game: Game, rentalPeriod: RentalPeriod): Rent{
-        return Rent(this, game, rentalPeriod)
+        val rent = Rent(this, game, rentalPeriod)
+        rentedGames.add(rent)
+
+        return rent
+    }
+
+    fun monthlyGames(month: Int): List<Game> {
+        return rentedGames
+            .filter { rent -> rent?.rentalPeriod?.initialDate?.monthValue == month }
+            .map { rent -> rent!!.game }
     }
 
     companion object {
