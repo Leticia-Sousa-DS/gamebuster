@@ -1,4 +1,5 @@
 import org.example.gamebusters.model.RentalPeriod
+import org.example.gamebusters.model.SubscriptionPlan
 import org.example.gamebusters.service.ConsumeApi
 import java.time.LocalDate
 
@@ -32,7 +33,18 @@ fun main(){
         period2
     )
 
+    //println(gamerAna.rentedGames)
+
+    val gamerBruno = gamerList.get(4)
+    gamerBruno.plan = SubscriptionPlan("GOLD", 19.90, 5)
+
+    gamerBruno.rentAGame(gameTLOU, period)
+    gamerBruno.rentAGame(gameSpiderman, period2)
+    gamerBruno.rentAGame(gameSpiderman, period2)
+    gamerBruno.rentAGame(gameSpiderman, period2)
+    gamerBruno.rentAGame(gameSpiderman, period2)
+    gamerBruno.rentAGame(gameSpiderman, period2)
+    println(gamerBruno.rentedGames)
 
 
-    println(gamerAna.rentedGames)
 }

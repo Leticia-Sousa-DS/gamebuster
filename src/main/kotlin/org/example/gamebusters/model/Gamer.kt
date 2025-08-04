@@ -1,6 +1,5 @@
 package org.example.gamebusters.model
 
-import java.time.LocalDate
 import java.util.Scanner
 import kotlin.random.Random
 
@@ -15,6 +14,8 @@ data class Gamer(var name:String, var email:String){
         }
     var internalId:String? = null
         private set
+    var plan: Plan = StandalonePlan("BRONZE")
+
     val searchedGames = mutableListOf<Game?>()
     val rentedGames = mutableListOf<Rent?>()
 
@@ -57,6 +58,12 @@ data class Gamer(var name:String, var email:String){
         rentedGames.add(rent)
 
         return rent
+    }
+
+    fun monthlyGames(month: Int): List<Game> {
+        return rentedGames
+            .filter { rent -> rent?.rentalPeriod?.initialDate?.monthValue == month }
+            .map { rent -> rent!!.game }
     }
 
     companion object {
