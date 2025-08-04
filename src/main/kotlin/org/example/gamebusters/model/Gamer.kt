@@ -1,5 +1,6 @@
 package org.example.gamebusters.model
 
+import org.example.gamebusters.utils.formatWithTwoDecimals
 import java.util.Scanner
 import kotlin.random.Random
 
@@ -27,7 +28,7 @@ data class Gamer(var name:String, var email:String): Recommended{
     }
 
     override val avgRating: Double
-        get() = ratingsList.average()
+        get() = ratingsList.average().formatWithTwoDecimals()
 
     override fun recommend(rating: Int) {
         if (rating < 1 || rating > 10){

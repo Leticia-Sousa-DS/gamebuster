@@ -1,6 +1,8 @@
+import com.google.gson.GsonBuilder
 import org.example.gamebusters.model.RentalPeriod
 import org.example.gamebusters.model.SubscriptionPlan
 import org.example.gamebusters.service.ConsumeApi
+import java.io.File
 import java.time.LocalDate
 
 fun main(){
@@ -60,10 +62,17 @@ fun main(){
 
     gamerAna.recommendAGame(gameTLOU, 7)
 
-    println("Bruno's Recs:")
-    println(gamerBruno.recommendedGames)
-    println("Ana's Recs:")
-    println(gamerAna.recommendedGames)
+//    println("Bruno's Recs:")
+//    println(gamerBruno.recommendedGames)
+//    println("Ana's Recs:")
+//    println(gamerAna.recommendedGames)
 
+    val gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()
+    val serialization = gson.toJson(gamerBruno.recommendedGames)
+    println(serialization)
+
+    val archive = File("recommendedGames-${gamerBruno.name}.json")
+    archive.writeText(serialization)
+    println(archive.absolutePath)
 
 }
