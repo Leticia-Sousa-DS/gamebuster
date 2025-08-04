@@ -1,6 +1,5 @@
 package org.example.gamebusters.model
 
-import org.example.gamebusters.utils.formatWithTwoDecimals
 import java.math.BigDecimal
 import java.math.RoundingMode
 
