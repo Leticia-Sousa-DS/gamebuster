@@ -28,7 +28,8 @@ data class Game(val title:String, val cover:String): Recommended {
                 "Title= $title \n" +
                 "Cover= '$cover' \n" +
                 "Price= $price \n" +
-                "Description= $description"
+                "Description= $description \n" +
+                "Reputation= $avgRating"
     }
 
 

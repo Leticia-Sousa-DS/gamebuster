@@ -50,9 +50,20 @@ fun main(){
     gamerBruno.recommend(7)
     gamerBruno.recommend(8)
     gamerBruno.recommend(9)
-    println(gamerBruno)
+    //println(gamerBruno)
 
     gamerBruno.rentAGame(gameSpiderman, period)
-    println(gamerBruno.rentedGames)
+    //println(gamerBruno.rentedGames)
+
+    gamerBruno.recommendAGame(gameSpiderman, 6)
+    gamerBruno.recommendAGame(gameTLOU, 8)
+
+    gamerAna.recommendAGame(gameTLOU, 7)
+
+    println("Bruno's Recs:")
+    println(gamerBruno.recommendedGames)
+    println("Ana's Recs:")
+    println(gamerAna.recommendedGames)
+
 
 }
