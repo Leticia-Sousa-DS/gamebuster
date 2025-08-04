@@ -3,7 +3,7 @@ package org.example.gamebusters.model
 import java.util.Scanner
 import kotlin.random.Random
 
-data class Gamer(var name:String, var email:String){
+data class Gamer(var name:String, var email:String): Recommended{
     var dateOfBirth:String? = null
     var user:String? = null
         set(value){
@@ -18,6 +18,18 @@ data class Gamer(var name:String, var email:String){
 
     val searchedGames = mutableListOf<Game?>()
     val rentedGames = mutableListOf<Rent?>()
+    private val ratingsList = mutableListOf<Int>()
+
+    override val avgRating: Double
+        get() = ratingsList.average()
+
+    override fun recommend(rating: Int) {
+        if (rating < 1 || rating > 10){
+            println("Inválido! Por favor, insira uma nota entre 1 e 10")
+        } else {
+            ratingsList.add(rating)
+        }
+    }
 
     constructor(name: String, email: String, dateOfBirth: String, user: String):
             this(name, email) {
@@ -34,7 +46,13 @@ data class Gamer(var name:String, var email:String){
     }
 
     override fun toString(): String {
-        return "Gamer(name='$name', email='$email', dateOfBirth=$dateOfBirth, user=$user, internalId=$internalId)"
+        return "Gamer \n" +
+                "(name='$name', \n" +
+                " email='$email',\n" +
+                " dateOfBirth=$dateOfBirth, \n" +
+                "user=$user, \n" +
+                "internalId=$internalId\n" +
+                "reputation = $avgRating )"
     }
 
     fun createInternalId() {
