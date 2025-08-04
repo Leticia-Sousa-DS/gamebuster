@@ -7,6 +7,7 @@ import java.math.BigDecimal
 data class Game(@Expose val title:String, @Expose val cover:String): Recommended {
     var description:String? = null
     var price = BigDecimal("0.0")
+    var id = 0
 
     private  val ratingsList = mutableListOf<Int>()
 
@@ -21,10 +22,11 @@ data class Game(@Expose val title:String, @Expose val cover:String): Recommended
         }
     }
 
-    constructor(title: String, cover: String, price: Double, description: String):
+    constructor(title: String, cover: String, price: Double, description: String, id: Int = 0):
             this(title, cover) {
                 this.price = BigDecimal(price)
                 this.description = description
+                this.id = id
             }
 
     override fun toString(): String {
@@ -33,7 +35,8 @@ data class Game(@Expose val title:String, @Expose val cover:String): Recommended
                 "Cover= '$cover' \n" +
                 "Price= $price \n" +
                 "Description= $description \n" +
-                "Reputation= $avgRating"
+                "Reputation= $avgRating" +
+                "Id= $id"
     }
 
 

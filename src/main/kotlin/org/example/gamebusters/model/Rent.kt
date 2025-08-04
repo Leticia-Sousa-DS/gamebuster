@@ -9,6 +9,7 @@ data class Rent(
     val rentalPeriod: RentalPeriod
     ) {
     val rentValue = gamer.plan.getValue(this)
+    var id = 0
 
     override fun toString(): String {
        return "${gamer.name} alugou '${game.title}' por R$ $rentValue."

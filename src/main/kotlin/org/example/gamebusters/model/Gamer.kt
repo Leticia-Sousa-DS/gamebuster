@@ -13,6 +13,7 @@ data class Gamer(var name:String, var email:String): Recommended{
                 createInternalId()
             }
         }
+    var id = 0
     var internalId:String? = null
         private set
     var plan: Plan = StandalonePlan("BRONZE")
@@ -38,10 +39,11 @@ data class Gamer(var name:String, var email:String): Recommended{
         }
     }
 
-    constructor(name: String, email: String, dateOfBirth: String, user: String):
+    constructor(name: String, email: String, dateOfBirth: String, user: String, id: Int = 0):
             this(name, email) {
                 this.dateOfBirth = dateOfBirth
                 this.user = user
+                this.id = id
                 createInternalId()
             }
 
@@ -59,7 +61,8 @@ data class Gamer(var name:String, var email:String): Recommended{
                 " dateOfBirth=$dateOfBirth, \n" +
                 "user=$user, \n" +
                 "internalId=$internalId\n" +
-                "reputation = $avgRating )"
+                "reputation = $avgRating" +
+                "id= $id )"
     }
 
     fun createInternalId() {
