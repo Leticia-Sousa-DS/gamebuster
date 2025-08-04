@@ -1,8 +1,9 @@
-package org.example.gamebusters.main
-
 import org.example.gamebusters.data.Database
+import org.example.gamebusters.model.Game
 
 fun main() {
-    val connection = Database.obtainConnection()
-    println(connection)
+
+    val gameList: List<Game> = Database.getGames()
+    println(gameList)
+
 }

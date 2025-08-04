@@ -38,7 +38,7 @@ fun main(){
     //println(gamerAna.rentedGames)
 
     val gamerBruno = gamerList.get(4)
-    gamerBruno.plan = SubscriptionPlan("GOLD", 19.90, 5, 0.2)
+    //gamerBruno.plan = SubscriptionPlan("GOLD", 19.90, 5, 0.2)
 
     gamerBruno.rentAGame(gameTLOU, period)
     gamerBruno.rentAGame(gameSpiderman, period2)
