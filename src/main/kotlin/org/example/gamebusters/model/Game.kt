@@ -35,8 +35,8 @@ data class Game(@Expose val title:String, @Expose val cover:String): Recommended
                 "Cover= '$cover' \n" +
                 "Price= $price \n" +
                 "Description= $description \n" +
-                "Reputation= $avgRating" +
-                "Id= $id"
+                "Reputation= $avgRating \n" +
+                "Id= $id \n"
     }
 
 
