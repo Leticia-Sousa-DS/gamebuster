@@ -1,13 +1,22 @@
 package org.example.gamebusters.model
 
-class StandalonePlan(type: String): Plan(type) {
+import java.math.BigDecimal
+import java.math.RoundingMode
 
-    override fun getValue(rent: Rent): Double {
+class StandalonePlan(type: String, id: Int = 0): Plan(type, id) {
+
+    override fun getValue(rent: Rent): BigDecimal {
         var originalValue = super.getValue(rent)
         if (rent.gamer.avgRating > 8) {
-            originalValue -= originalValue * 0.1
+            originalValue -= originalValue.multiply(BigDecimal("0.1"))
         }
-        return originalValue
+        return originalValue.setScale(2, RoundingMode.HALF_EVEN)
+    }
+
+    override fun toString(): String {
+        return "Standalone Plan: \n" +
+                "Type: $type\n" +
+                "Id: $id\n"
     }
 
 }

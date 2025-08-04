@@ -1,9 +1,11 @@
 package org.example.gamebusters.model
 
-sealed class Plan(val type: String) {
+import java.math.BigDecimal
 
-    open fun getValue(rent: Rent): Double {
-        return rent.game.price * rent.rentalPeriod.inDays
+sealed class Plan(val type: String, var id: Int = 0) {
+
+    open fun getValue(rent: Rent): BigDecimal {
+        return rent.game.price * rent.rentalPeriod.inDays.toBigDecimal()
     }
 
 }

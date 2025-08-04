@@ -1,13 +1,18 @@
 package org.example.gamebusters.model
 
-data class Game(val title:String, val cover:String): Recommended {
+import com.google.gson.annotations.Expose
+import org.example.gamebusters.utils.formatWithTwoDecimals
+import java.math.BigDecimal
+
+data class Game(@Expose val title:String, @Expose val cover:String): Recommended {
     var description:String? = null
-    var price = 0.0
+    var price = BigDecimal("0.0")
+    var id = 0
 
     private  val ratingsList = mutableListOf<Int>()
 
     override val avgRating: Double
-        get() = ratingsList.average()
+        get() = ratingsList.average().formatWithTwoDecimals()
 
     override fun recommend(rating: Int) {
         if (rating < 1 || rating > 10){
@@ -17,10 +22,11 @@ data class Game(val title:String, val cover:String): Recommended {
         }
     }
 
-    constructor(title: String, cover: String, price: Double, description: String):
+    constructor(title: String, cover: String, price: Double, description: String, id: Int = 0):
             this(title, cover) {
-                this.price = price
+                this.price = BigDecimal(price)
                 this.description = description
+                this.id = id
             }
 
     override fun toString(): String {
@@ -29,7 +35,8 @@ data class Game(val title:String, val cover:String): Recommended {
                 "Cover= '$cover' \n" +
                 "Price= $price \n" +
                 "Description= $description \n" +
-                "Reputation= $avgRating"
+                "Reputation= $avgRating \n" +
+                "Id= $id \n"
     }
 
 
