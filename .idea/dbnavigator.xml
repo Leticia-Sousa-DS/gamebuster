@@ -19,19 +19,18 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
+    <show-object-properties value="false" />
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="7b4c3a3d-f96d-4379-86be-7bd30f3ef97e">
-      <console name="Connection" type="STANDARD" schema="gamebusters" session="Main">select
-    g.`cover`,
-    g.`description`,
-    g.`id`,
-    g.`price`,
-    g.`title`
-from
-    `games` g;</console>
+      <console name="Connection" type="STANDARD" schema="gamebusters" session="Main"><![CDATA[CREATE TABLE games (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cover VARCHAR(255),
+    description VARCHAR(255),
+    price DECIMAL(10,2),
+    title VARCHAR(100)
+)]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -40,7 +39,6 @@ from
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
       <object connection-id="7b4c3a3d-f96d-4379-86be-7bd30f3ef97e" object-ref="consoles/Connection" />
-      <object connection-id="7b4c3a3d-f96d-4379-86be-7bd30f3ef97e" object-ref="schemas/gamebusters/tables/games" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">

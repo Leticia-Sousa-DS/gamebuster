@@ -11,3 +11,4 @@ fun InfoGameJson.createGame(): Game {
         this.descricao
     )
 }
+
