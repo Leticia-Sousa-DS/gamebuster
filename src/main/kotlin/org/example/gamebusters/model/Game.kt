@@ -22,9 +22,9 @@ data class Game(@Expose val title:String, @Expose val cover:String): Recommended
         }
     }
 
-    constructor(title: String, cover: String, price: Double, description: String, id: Int = 0):
+    constructor(title: String, cover: String, price: BigDecimal, description: String?, id: Int = 0):
             this(title, cover) {
-                this.price = BigDecimal(price)
+                this.price = price
                 this.description = description
                 this.id = id
             }
