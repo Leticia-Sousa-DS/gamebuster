@@ -23,32 +23,6 @@ object Database {
         }
     }
 
-    fun getGames(): List<Game> {
-        val gameList = mutableListOf<Game>()
-        val connection = obtainConnection()
 
-        if (connection != null) {
-            try {
-                val statement = connection.createStatement()
-                val result = statement.executeQuery("SELECT * FROM GAMES")
-
-                while (result.next()){
-                    val id = result.getInt("id")
-                    val title = result.getString("title")
-                    val cover = result.getString("cover")
-                    val description = result.getString("description")
-                    val price = result.getDouble("price")
-
-                    val game= Game(title, cover, price, description, id)
-                    gameList.add(game)
-                }
-
-                statement.close()
-            } finally {
-                connection.close()
-            }
-        }
-        return gameList
-    }
 
 }

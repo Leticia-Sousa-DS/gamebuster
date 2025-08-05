@@ -6,7 +6,7 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
@@ -24,14 +24,14 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="7b4c3a3d-f96d-4379-86be-7bd30f3ef97e">
-      <console name="Connection" type="STANDARD" schema="gamebusters" session="Main"><![CDATA[select
+      <console name="Connection" type="STANDARD" schema="gamebusters" session="Main">select
     g.`cover`,
     g.`description`,
     g.`id`,
     g.`price`,
     g.`title`
 from
-    `games` g;]]></console>
+    `games` g;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -39,8 +39,8 @@ from
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="7b4c3a3d-f96d-4379-86be-7bd30f3ef97e" object-ref="schemas/gamebusters/tables/games" />
       <object connection-id="7b4c3a3d-f96d-4379-86be-7bd30f3ef97e" object-ref="consoles/Connection" />
+      <object connection-id="7b4c3a3d-f96d-4379-86be-7bd30f3ef97e" object-ref="schemas/gamebusters/tables/games" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
