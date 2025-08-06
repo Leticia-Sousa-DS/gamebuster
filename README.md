@@ -17,7 +17,7 @@
   - JUnit Jupiter 5.10.0 (testes)
 
 ## 🚀 Sobre o Projeto
-GameBusters é uma aplicação focada na gestão de aluguel de jogos digitais. Os títulos são obtidos diretamente da API CheapShark, permitindo consulta eficiente do catálogo. O sistema oferece cadastro e gerenciamento de usuários (gamers). 
+GameBusters é uma aplicação focada na gestão de aluguel de jogos digitais. Os títulos podem ser obtidos diretamente da API CheapShark, permitindo consulta eficiente do catálogo. O sistema oferece cadastro e gerenciamento de usuários (gamers), além de persistência de dados com Hibernate. 
 
 ## ⚡ Como Executar
 
