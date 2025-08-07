@@ -20,4 +20,23 @@ abstract class DAO <TModel, TEntity> (protected val manager: EntityManager, prot
         manager.persist(entity)
         manager.transaction.commit()
     }
+
+    open fun findById(id: Int): TModel{
+        val query = manager.createQuery("FROM ${entityType.simpleName} WHERE id=:id", entityType)
+        query.setParameter("id", id)
+        val entity = query.singleResult
+
+        return toModel(entity)
+    }
+
+    open fun delete(id: Int) {
+        val query = manager.createQuery("FROM ${entityType.simpleName} WHERE id=:id", entityType)
+        query.setParameter("id", id)
+        val entity = query.singleResult
+
+        manager.transaction.begin()
+        manager.remove(entity)
+        manager.transaction.commit()
+    }
+
 }
