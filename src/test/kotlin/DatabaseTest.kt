@@ -19,15 +19,29 @@ fun main() {
     val gamersDAO = GamersDAO(manager)
 
 
-    //gamesDAO.addGame(game2)
+    //gamesDAO.add(game2)
 
-    //gamersDAO.addGamer(gamer)
+    //val retrievedGame = gamesDAO.findById(5)
+    //println(retrievedGame)
 
-    val gameList: List<Game> = gamesDAO.getGames()
+    //gamesDAO.delete(5)
+
+
+    //gamersDAO.add(gamer)
+
+    val gameList: List<Game> = gamesDAO.getList()
     //println(gameList)
 
-    val gamersList: List<Gamer> = gamersDAO.getGamers()
+    val gamersList: List<Gamer> = gamersDAO.getList()
     println(gamersList)
+
+    //val retrievedGamer = gamersDAO.findById(2)
+    //println(retrievedGamer)
+
+    //gamersDAO.delete(2)
+
+    //println(gamersList)
+
 
     manager.close()
 

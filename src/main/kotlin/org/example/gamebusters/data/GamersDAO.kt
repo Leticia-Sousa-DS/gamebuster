@@ -4,18 +4,14 @@ import GamerEntity
 import org.example.gamebusters.model.Gamer
 import javax.persistence.EntityManager
 
-class GamersDAO(private val manager: EntityManager) {
+class GamersDAO(manager: EntityManager): DAO<Gamer, GamerEntity>(manager, GamerEntity::class.java) {
 
-    fun getGamers(): List<Gamer> {
-        val query = manager.createQuery("FROM GamerEntity", GamerEntity::class.java)
-        return query.resultList.map { entity -> Gamer(entity.name, entity.email, entity.dateOfBirth, entity.user, entity.id) }
+    override fun toEntity(obj: Gamer): GamerEntity {
+        return GamerEntity(obj.id, obj.name, obj.email, obj.dateOfBirth, obj.user)
     }
 
-    fun addGamer(gamer: Gamer){
-        val entity = GamerEntity(gamer.id, gamer.name, gamer.email, gamer.dateOfBirth, gamer.user)
-        manager.transaction.begin()
-        manager.persist(entity)
-        manager.transaction.commit()
+    override fun toModel(entity: GamerEntity): Gamer {
+        return Gamer(entity.name, entity.email, entity.dateOfBirth, entity.user, entity.id)
     }
 
 }
