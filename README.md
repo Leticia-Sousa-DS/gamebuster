@@ -1,9 +1,10 @@
 <h1 align="center" style="font-weight: bold;">GAMEBUSTERS 💻</h1>
 
 ![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)
+![Mysql](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
 
 <p align="center">
-  <b>Sistema para gestão de aluguel de jogos digitais, desenvolvido em Kotlin.</b>
+  <b>Sistema para gestão de aluguel de jogos digitais, desenvolvido em Kotlin e com persistência no MySQL.</b>
 </p>
 
 ---
