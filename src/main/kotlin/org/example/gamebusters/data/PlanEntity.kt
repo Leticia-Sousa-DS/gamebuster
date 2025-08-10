@@ -1,6 +1,7 @@
 package org.example.gamebusters.data
 
 import java.math.BigDecimal
+import java.math.RoundingMode
 import javax.persistence.Entity
 import javax.persistence.Inheritance
 import javax.persistence.InheritanceType
@@ -23,9 +24,9 @@ sealed class PlanEntity(
     @Entity
     @DiscriminatorValue("Subscription")
     class SubscriptionPlanEntity(type: String = "Subscription Plan",
-                                 val fee: BigDecimal = BigDecimal(0.00),
+                                 val fee: BigDecimal = BigDecimal(0.00).setScale(2, RoundingMode.HALF_EVEN),
                                  val includedGames: Int = 0,
-                                 val reputationDiscountRate: BigDecimal = BigDecimal(0.00),
+                                 val reputationDiscountRate: BigDecimal = BigDecimal(0.00).setScale(2, RoundingMode.HALF_EVEN),
                                  id: Int = 0
                                      ): PlanEntity(type, id)
 
