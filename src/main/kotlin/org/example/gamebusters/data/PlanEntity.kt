@@ -1,14 +1,32 @@
 package org.example.gamebusters.data
 
 import java.math.BigDecimal
+import javax.persistence.Entity
+import javax.persistence.Inheritance
+import javax.persistence.InheritanceType
+import javax.persistence.Table
+import javax.persistence.*
 
-sealed class PlanEntity(val type: String) {
+@Entity
+@Table(name = "plans")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "PlanType", discriminatorType = DiscriminatorType.STRING)
+sealed class PlanEntity(
+    val type: String,
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Int = 0) {
 
-    class StandalonePlanEntity(type: String): PlanEntity(type)
+    @Entity
+    @DiscriminatorValue("Standalone")
+    class StandalonePlanEntity(type: String = "Standalone Plan", id: Int = 0): PlanEntity(type, id)
 
-    class SubscriptionPlanEntity(type: String,
-                                 val fee: BigDecimal,
-                                 val includedGames: Int,
-                                 val reputationDiscountRate: BigDecimal): PlanEntity(type)
+    @Entity
+    @DiscriminatorValue("Subscription")
+    class SubscriptionPlanEntity(type: String = "Subscription Plan",
+                                 val fee: BigDecimal = BigDecimal(0.00),
+                                 val includedGames: Int = 0,
+                                 val reputationDiscountRate: BigDecimal = BigDecimal(0.00),
+                                 id: Int = 0
+                                     ): PlanEntity(type, id)
 
 }
